@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# I did not prefer to wrap results as string object in this project. 
+# I did not prefer to wrap results as string object in this project.
 # But if you want to work on strings to wrap the features you can return results string by using str function.
 
 # for i in range(0,len(results)):
@@ -9,7 +9,7 @@
 # str_res
 
 # In[65]:
-
+# ciğ köfteeeeeeeeeeeeeeeeeeeeeeeeeeee
 
 import pandas as pd
 import csv
@@ -27,7 +27,7 @@ adres = []
 title = []
 
 for j in range():
-    
+
     r = requests.get("https://www.hurriyetemlak.com/konut-satilik/villa/listeleme?pageSize=50&view=catalog&page={}".format(j))
 
     soup = BeautifulSoup(r.text,'html.parser')
@@ -45,14 +45,14 @@ for j in range():
         list_id.append(tag.get('data-listing-id'))
 
 records={"list_id":list_id,"title": title, "price": price, "date":date, "area-m2": area, "owner":owner, "room": room, "seller": seller, "adres":adres, }
- 
+
 #w = csv.writer(open("hurriyet.csv", "w"))
 
 #for key, val in records.items():
 
         #w.writerow([key, val])
 df = pd.DataFrame(records)
- 
+
 df.to_csv("{}hurriyet.txt".format(j))
 
 #df.tail(20)
@@ -72,10 +72,10 @@ import pandas as pd
 df=pd.read_csv("520hurriyet.txt")
 
 for i in range(0,len(df.iloc[:,1])):
-               
+
     if df.iloc[i,1][0:5] == "https":
         df.loc[i,"adres"] = "New project without adres info"
-               
+
     else:
         try:
             df.iloc[i,1] = "-".join(df.iloc[i,1].replace("/konut-satilik/","").replace("-emlakcidan-villa/detay","").replace("-sahibinden-villa/detay","").split("/"))
@@ -88,8 +88,8 @@ for i in range(0,len(df.iloc[:,1])):
             continue
 
 df=df.dropna(subset=['list_id'])
- 
-df= df.drop(["Unnamed: 0"],axis=1)               
+
+df= df.drop(["Unnamed: 0"],axis=1)
 
 df.reset_index()
 
@@ -108,7 +108,7 @@ df.to_csv("520hurriyet_inorder.csv", index=False)
 #df.to_csv("50hurriyet_inorder.csv", index=False)
 
 
-# 
+#
 # #import pandas as pd
 # df1=pd.read_csv("50hurriyet_inorder.csv")
 # df2=pd.read_csv("100hurriyet_inorder.csv")
@@ -122,4 +122,3 @@ df.to_csv("520hurriyet_inorder.csv", index=False)
 
 
 #df2.sort_values(by=["şehir"])
-
