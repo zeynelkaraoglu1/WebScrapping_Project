@@ -9,8 +9,7 @@
 # str_res
 
 # In[65]:
-# ciğ köfteeeeeeeeeeeeeeeeeeeeeeeeeeee
-
+# kabak
 import pandas as pd
 import csv
 import requests
